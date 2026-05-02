@@ -55,7 +55,7 @@
             this.grpButton.Controls.Add(this.btnChangeCard);
             this.grpButton.Controls.Add(this.btnDealCard);
             this.grpButton.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.grpButton.Location = new System.Drawing.Point(35, 213);
+            this.grpButton.Location = new System.Drawing.Point(35, 253);
             this.grpButton.Name = "grpButton";
             this.grpButton.Size = new System.Drawing.Size(504, 80);
             this.grpButton.TabIndex = 0;
@@ -67,7 +67,7 @@
             this.btnDealCard.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnDealCard.Location = new System.Drawing.Point(24, 33);
             this.btnDealCard.Name = "btnDealCard";
-            this.btnDealCard.Size = new System.Drawing.Size(85, 40);
+            this.btnDealCard.Size = new System.Drawing.Size(71, 37);
             this.btnDealCard.TabIndex = 0;
             this.btnDealCard.Text = "發牌";
             this.btnDealCard.UseVisualStyleBackColor = false;
@@ -77,30 +77,32 @@
             // 
             this.btnChangeCard.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnChangeCard.Enabled = false;
-            this.btnChangeCard.Location = new System.Drawing.Point(115, 33);
+            this.btnChangeCard.Location = new System.Drawing.Point(101, 33);
             this.btnChangeCard.Name = "btnChangeCard";
-            this.btnChangeCard.Size = new System.Drawing.Size(88, 40);
+            this.btnChangeCard.Size = new System.Drawing.Size(76, 37);
             this.btnChangeCard.TabIndex = 1;
             this.btnChangeCard.Text = "換牌";
             this.btnChangeCard.UseVisualStyleBackColor = false;
+            this.btnChangeCard.Click += new System.EventHandler(this.btnChangeCard_Click);
             // 
             // btnCheck
             // 
             this.btnCheck.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnCheck.Enabled = false;
-            this.btnCheck.Location = new System.Drawing.Point(209, 33);
+            this.btnCheck.Location = new System.Drawing.Point(183, 33);
             this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(102, 40);
+            this.btnCheck.Size = new System.Drawing.Size(102, 37);
             this.btnCheck.TabIndex = 2;
             this.btnCheck.Text = "判斷牌型";
             this.btnCheck.UseVisualStyleBackColor = false;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
             // lblResult
             // 
             this.lblResult.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblResult.Location = new System.Drawing.Point(317, 37);
+            this.lblResult.Location = new System.Drawing.Point(291, 35);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(171, 33);
+            this.lblResult.Size = new System.Drawing.Size(207, 33);
             this.lblResult.TabIndex = 1;
             this.lblResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -109,7 +111,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(721, 355);
+            this.ClientSize = new System.Drawing.Size(735, 428);
             this.Controls.Add(this.grpButton);
             this.Controls.Add(this.grpPoker);
             this.Name = "frmPoker";
