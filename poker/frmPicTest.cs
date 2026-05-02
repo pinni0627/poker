@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace poker
 {
-    public partial class Form1 : Form
+    public partial class frmPicTest : Form
     {
-        public Form1()
+        public frmPicTest()
         {
             InitializeComponent();
         }
