@@ -16,7 +16,7 @@ namespace poker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPicTest());
+            Application.Run(new frmPoker());
         }
     }
 }
