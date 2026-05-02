@@ -19,7 +19,8 @@ namespace poker
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            this.picTest.Image = Properties.Resources.pic39;
+            picTest.Image =Properties.Resources.ResourceManager.GetObject("pic21") as Image;
+
         }
     }
 }
