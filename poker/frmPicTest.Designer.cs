@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picTest = new System.Windows.Forms.PictureBox();
             this.btnTest = new System.Windows.Forms.Button();
             this.lblNum = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTest)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // picTest
             // 
-            this.pictureBox1.Image = global::poker.Properties.Resources.back;
-            this.pictureBox1.Location = new System.Drawing.Point(42, 34);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(85, 115);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.picTest.Image = global::poker.Properties.Resources.back;
+            this.picTest.Location = new System.Drawing.Point(42, 34);
+            this.picTest.Name = "picTest";
+            this.picTest.Size = new System.Drawing.Size(85, 115);
+            this.picTest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.picTest.TabIndex = 0;
+            this.picTest.TabStop = false;
             // 
             // btnTest
             // 
@@ -54,6 +54,7 @@
             this.btnTest.TabIndex = 1;
             this.btnTest.Text = "換牌";
             this.btnTest.UseVisualStyleBackColor = false;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // lblNum
             // 
@@ -73,11 +74,11 @@
             this.ClientSize = new System.Drawing.Size(347, 192);
             this.Controls.Add(this.lblNum);
             this.Controls.Add(this.btnTest);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picTest);
             this.Name = "frmPicTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "圖片資源測試";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -85,7 +86,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picTest;
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Label lblNum;
     }

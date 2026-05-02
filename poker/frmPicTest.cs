@@ -16,5 +16,10 @@ namespace poker
         {
             InitializeComponent();
         }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            this.picTest.Image = Properties.Resources.pic39;
+        }
     }
 }
