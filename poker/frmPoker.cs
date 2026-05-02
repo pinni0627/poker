@@ -87,6 +87,15 @@ namespace poker
             }
         }
         #endregion
+        #region
+        private void ShowCards()
+        {
+            for (int i = 0; i < playerPoker.Length; i++)
+            {
+                pic[i].Image = this.GetImage($"pic{playerPoker[i] + 1}");
+            }
+        }
+        #endregion
         private async void btnDealCard_Click(object sender, EventArgs e)
         {
             // 先將牌面蓋掉
@@ -101,6 +110,7 @@ namespace poker
             }
             // 洗牌
             Shuffle();
+            this.lblResult.Text = "";
             // 暫停500ms
             await Task.Delay(500);
 
@@ -110,6 +120,9 @@ namespace poker
                 pic[i].Image = GetImage("pic" + (allPoker[i] + 1));
                 playerPoker[i] = allPoker[i];
             }
+
+            this.ShowCards();
+
             // 啟用所有牌的點擊事件
             for (int i = 0; i < 5; i++)
             {
@@ -117,7 +130,7 @@ namespace poker
                 pic[i].Tag = "front";
             }
             btnChangeCard.Enabled = true;
-            this.lblResult.Text = "";
+            
         }
 
         private void btnChangeCard_Click(object sender, EventArgs e)
