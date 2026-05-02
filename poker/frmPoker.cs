@@ -13,6 +13,9 @@ namespace poker
     public partial class frmPoker : Form
     {
         #region 欄位
+        // 賠率設定
+        int totalMoney = 1000000; // 初始總資金
+        int currentBet = 0;       // 當前押注金額
         PictureBox[] pic = new PictureBox[5];
         int[] allPoker = new int[52];
         int[] playerPoker = new int[5];
@@ -22,6 +25,11 @@ namespace poker
         {
             InitializeComponent();
             InitializePoker();
+            txtTotalMoney.Text = totalMoney.ToString(); // 顯示 1,000,000
+
+            txtBetMoney.Enabled = true;                 // 確保押注框可以輸入
+            button1.Enabled = true;                      // 啟用押注按鈕
+            btnDealCard.Enabled = false;                // 未押注前不能發牌
         }
 
         #region
@@ -110,7 +118,7 @@ namespace poker
             }
             // 洗牌
             Shuffle();
-            this.lblResult.Text = "";
+            
             // 暫停500ms
             await Task.Delay(500);
 
@@ -257,6 +265,52 @@ namespace poker
             btnChangeCard.Enabled = false;
             btnCheck.Enabled = false;
             btnDealCard.Enabled = true;
+            // ... 前面判斷牌型的 bool 邏輯保持不變 ...
+
+            int multiplier = 0; // 賠率
+
+            if (isRoyalisFlush) { result = $"{colorList[0]} 同花大順"; multiplier = 250; }
+            else if (isStraightFlush) { result = $"{colorList[0]} 同花順"; multiplier = 50; }
+            else if (isFourOfAKind) { result = $"{pointList[0]} 鐵支"; multiplier = 25; }
+            else if (isFullHouse) { result = $"{pointList[0]}三張{pointList[1]}兩張 葫蘆"; multiplier = 9; }
+            else if (isFlush) { result = $"{colorList[0]} 同花"; multiplier = 6; }
+            else if (isStraight) { result = "順子"; multiplier = 4; }
+            else if (isThreeOfAKind) { result = $"{pointList[0]} 三條"; multiplier = 3; }
+            else if (isTwoPair) { result = $"{pointList[0]},{pointList[1]} 兩對"; multiplier = 2; }
+            else if (isOnePair) { result = $"{pointList[0]} 一對"; multiplier = 1; }
+            else { result = "雜牌"; multiplier = 0; }
+
+            // --- 賠率計算部分 ---
+            int winMoney = currentBet * multiplier;
+            totalMoney += winMoney; // 將贏得的獎金加回總資金
+
+            lblResult.Text = $"{result} (賠率: {multiplier}x) ";
+            txtTotalMoney.Text = totalMoney.ToString();
+
+            // 重設按鈕狀態以便下一局
+            btnCheck.Enabled = false;
+            button1.Enabled = true;       // 重新啟用押注
+            txtBetMoney.Enabled = true;  // 重新啟用輸入框
+            btnDealCard.Enabled = false; // 必須先押注才能再發牌
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.lblResult.Text = "";
+            if (int.TryParse(txtBetMoney.Text, out currentBet) && currentBet > 0 && currentBet <= totalMoney)
+            {
+                totalMoney -= currentBet;
+                txtTotalMoney.Text = totalMoney.ToString();
+
+                // 押注成功後，鎖定輸入框，防止發牌後又改金額
+                txtBetMoney.Enabled = false;
+                button1.Enabled = false;
+                btnDealCard.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("金額不足或輸入錯誤！");
+            }
 
         }
     }
